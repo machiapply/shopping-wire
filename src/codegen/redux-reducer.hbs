@@ -1,0 +1,19 @@
+import { {{pascalCase namespace}}Actions } from '../actions/{{camelCase namespace}}Actions';
+import { actionTypes } from '../constants';
+
+const initialState = null;
+
+export const {{camelCase namespace}}Reducer = (
+  state: {{state_type}} = initialState,
+  action: {{pascalCase namespace}}Actions
+): {{state_type}} => {
+  switch (action.type) {
+    case actionTypes.{{constantCase action}}_{{constantCase namespace}}: {
+      return action.{{camelCase namespace}};
+    }
+
+    default: {
+      return state;
+    }
+  }
+};

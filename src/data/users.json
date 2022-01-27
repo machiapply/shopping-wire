@@ -1,0 +1,17 @@
+[
+  {
+    "email": "admin@applydigital.co",
+    "username": "Admin",
+    "type": "admin"
+  },
+  {
+    "email": "hotaru1208@gmail.com",
+    "username": "Hotaru",
+    "type": "donor"
+  },
+  {
+    "email": "machiko@applydigital.co",
+    "username": "User",
+    "type": "user"
+  }
+]

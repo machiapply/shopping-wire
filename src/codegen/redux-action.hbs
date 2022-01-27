@@ -1,0 +1,17 @@
+import { actionTypes } from '../constants';
+
+interface I{{pascalCase action}}{{pascalCase namespace}}Action {
+  // TODO: add this action type to constants
+  type: actionTypes.{{constantCase action}}_{{constantCase namespace}};
+  {{camelCase namespace}}: {{state_type}};
+}
+
+export const {{camelCase action}}{{pascalCase namespace}}Action = ({{camelCase namespace}}: {{state_type}}): I{{pascalCase action}}{{pascalCase namespace}}Action => {
+  return {
+    type: actionTypes.{{constantCase action}}_{{constantCase namespace}},
+    {{camelCase namespace}},
+  };
+};
+
+// Keep a list of all action interfaces here to export and use in the reducer file.
+export type {{pascalCase namespace}}Actions = I{{pascalCase action}}{{pascalCase namespace}}Action; // Add | NextAction | NextAction

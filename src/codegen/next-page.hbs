@@ -1,0 +1,13 @@
+import React from 'react';
+import { {{pascalCase namespace}} } from '../src/pages/{{pascalCase namespace}}';
+import { MetaTags } from '../src/components/seo/MetaTags';
+
+export default function {{pascalCase namespace}}Page(): JSX.Element {
+  return (
+    <>
+      {/* TODO: these should come from data, update accordingly */}
+      <MetaTags title="{{pascalCase namespace}}" description="{{pascalCase namespace}} description." />
+      <{{pascalCase namespace}} />
+    </>
+  );
+}

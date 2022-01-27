@@ -1,0 +1,12 @@
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { renderBaseProviders } from '../../../{{#if directory}}../{{/if}}test-helpers/testUtils';
+import { {{pascalCase namespace}} } from '..';
+
+describe('{{pascalCase namespace}}', () => {
+  it('mounts', () => {
+    renderBaseProviders(<{{pascalCase namespace}}>{{pascalCase namespace}}</{{pascalCase namespace}}>);
+    const element = screen.getByText(/{{pascalCase namespace}}/i);
+    expect(element).toHaveStyleRule('font-weight', 'normal');
+  });
+});
