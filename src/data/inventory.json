@@ -1,0 +1,14 @@
+[
+    {
+        "sku": "a1",
+        "quantity": 0
+    },
+    {
+        "sku": "a2",
+        "quantity": 11
+    },
+    {
+        "sku": "a3",
+        "quantity": 11
+    }
+]

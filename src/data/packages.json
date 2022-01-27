@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Package 1",
+    "id": "package-1",
+    "items": ["a1", "a2", "a3"]
+  },
+  {
+    "name": "Package 2",
+    "id": "package-2",
+    "items": ["a1", "a2"]
+  },
+  {
+    "name": "Package 3",
+    "id": "package-3",
+    "items": ["a2", "a3"]
+  }
+]

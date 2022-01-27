@@ -6,19 +6,13 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import { useAuth } from 'providers/AuthProvider';
 import { LoginForm } from 'components/LoginForm';
+import { ShoppingForm } from 'components/ShoppingForm';
 
 export default function Home() {
   const { currentUser } = useAuth();
   return (
     <>    
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-            Foodbank Wire
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-      {currentUser ? 'content' : <LoginForm />}
+      {currentUser ? <ShoppingForm /> : <LoginForm />}
     </>
   )
 }

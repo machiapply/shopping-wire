@@ -1,38 +1,53 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
+import Head from 'next/head'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 
+import { useAuth } from 'providers/AuthProvider';
+import { LoginForm } from 'components/LoginForm';
+import packages from 'data/packages.json';
 import products from 'data/products.json';
-import inventory from 'data/inventory.json';
 
-export interface IShoppingForm {
-}
-
-export const ShoppingForm = (props: IShoppingForm): JSX.Element => {
+export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { register, watch, handleSubmit } = useForm();
   const values = watch();
+  // const totalPrice = useMemo(() => {
+  //   const 
+  // }, []);
 
-  const Product = ({ sku, name, price }) => {
-    const avail = inventory.find(i => i.sku === sku);
+  const Package = ({ name, id, items }) => {
+    const itemsData = items.map(item => {
+      return products.find(p => p.sku === item);
+    });
+    const packagePrice = itemsData.reduce((acc, curr) => acc + curr.price, 0);
     return  (
       <Form.Group as={Col}>
-        <Form.Label htmlFor={sku}>{name}</Form.Label>
-        <Form.Select id={sku} {...register(sku)} disabled={avail.quantity === 0} value={values[sku]}>
+        <Form.Label htmlFor={id}>{name}</Form.Label>
+        <ul>
+          {itemsData.map(item => {
+            return (
+              <li>{item.name} ${item.price}</li>
+            );
+          })}
+        </ul>
+        <Form.Select id={id} {...register(id)} value={values[id]}>
           <option value="">Select Quantity</option>
-          {Array.from(Array(avail.quantity).keys()).map(i => <option value={i + 1}>{i + 1}</option>)}
+          {Array.from(Array(10).keys()).map(i => <option value={i + 1}>{i + 1}</option>)}
         </Form.Select>
+
+        ${packagePrice * (Number(values[id]) || 0)}
       </Form.Group>
     );
   };
   const onSubmit = async (formValues) => {
     setIsLoading(true);
-    const res = await fetch('/api/checkout', {
+    const res = await fetch('/api/checkin', {
       method: 'POST',
       body: JSON.stringify(formValues)
     });
@@ -49,7 +64,7 @@ export const ShoppingForm = (props: IShoppingForm): JSX.Element => {
     <Container as="section">
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Row>
-          {products.map(product => <Product key={product.sku} {...product} />)}
+          {packages.map(package => <Package key={package.id} {...package} />)}
         </Row>
 
         <Form.Group as="section">
@@ -61,10 +76,10 @@ export const ShoppingForm = (props: IShoppingForm): JSX.Element => {
               role="status"
               aria-hidden="true"
             />}{' '}
-            Get coupon
+            Donate
           </Button>
         </Form.Group>
       </Form>
     </Container>
-  );
-};
+  )
+}

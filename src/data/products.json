@@ -1,0 +1,17 @@
+[
+  {
+    "sku": "a1",
+    "name": "Apple bag",
+    "price": 5
+  },
+  {
+    "sku": "a2",
+    "name": "Banana bunch",
+    "price": 2
+  },
+  {
+    "sku": "a3",
+    "name": "Strawberry pack",
+    "price": 5
+  }
+]
