@@ -10,9 +10,11 @@ export const Navigation = (props: INavigation): JSX.Element => {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/">
-          Shopping Flow Wire
-        </Navbar.Brand>
+        <Link href="/" passHref>
+          <Navbar.Brand>
+            Food bank flow
+          </Navbar.Brand>
+          </Link>
         <Nav className="me-auto">
           <Link href="/" passHref>
             <Nav.Link>Donate</Nav.Link>

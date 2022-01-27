@@ -5,7 +5,7 @@ import inventory from 'data/inventory.json';
 import packages from 'data/packages.json';
 const filepath = path.join(__dirname, '../../../../src/data/inventory.json');
 
-export default async (
+const checkIn = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
@@ -13,9 +13,9 @@ export default async (
     try {
       const shopped = JSON.parse(req.body);
       const shoppedItems = Object.keys(shopped).map(name => {
-        const bundle = packages.find(p => p.id === name);
+        const pkg = packages.find(p => p.id === name);
         const quantity = Number(shopped[name]);
-        return bundle.items.map(item => ({
+        return pkg.items.map(item => ({
           sku: item,
           quantity,
         }));
@@ -45,3 +45,5 @@ export default async (
     });
   }
 };
+
+export default checkIn;

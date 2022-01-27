@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import inventory from 'data/inventory.json';
 const filepath = path.join(__dirname, '../../../../src/data/inventory.json');
 
-export default async (
+const checkOut = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
@@ -35,3 +35,5 @@ export default async (
     });
   }
 };
+
+export default checkOut;
